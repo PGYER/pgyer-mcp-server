@@ -2,6 +2,9 @@
 
 这是一个用于上传应用到 PGYER 平台的 MCP (Model Context Protocol) 服务器。
 
+<img src="https://raw.githubusercontent.com/PGYER/pgyer-mcp-server/refs/heads/main/assets/claude-screenshot.png" width="60%" alt="Claude Screenshot">
+
+
 ## 功能特点
 
 - 支持通过 MCP 协议上传应用到 PGYER 平台
