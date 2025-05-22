@@ -41,6 +41,14 @@ npm install
 1. 将 `/path/to/pgyer-mcp-server` 替换为你的实际项目路径
 2. 将 `your_pgyer_api_key` 替换为你的 PGYER API 密钥
 
+## 工具配置
+
+有以下几组工具可用（默认情况下全部启用）：
+
+1. `upload-app`：上传应用到 PGYER 平台
+2. `list-my-apps`：查询自己上传的 App 列表
+3. `get-app-info-by-shortcut`：通过短链接（App shortcut）查询 App 信息
+
 ## 许可证
 
 MIT
