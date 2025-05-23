@@ -70,6 +70,76 @@ npm install
 2. 将 `your_pgyer_api_key` 替换为你的 PGYER API 密钥
 3. 如果使用 Docker，请根据你的实际需求调整挂载目录的路径
 
+### 在 VSCode 中集成
+
+如果你希望在 VSCode 中集成 PGYER MCP Server，可以参考以下配置示例：
+
+#### 使用 Docker 方式
+
+```json
+{
+  "mcp": {
+    "inputs": [
+      {
+        "type": "promptString",
+        "id": "pgyer_api_key",
+        "description": "PGYER API Key",
+        "password": true
+      }
+    ],
+    "servers": {
+      "pgyer": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "PGYER_API_KEY",
+          "--mount",
+          "type=bind,src=${workspaceFolder},dst=/workspace",
+          "pgyer/pgyer-mcp-server"
+        ],
+        "env": {
+          "PGYER_API_KEY": "${input:pgyer_api_key}"
+        }
+      }
+    }
+  }
+}
+```
+
+#### 使用 Node.js 方式
+
+```json
+{
+  "mcp": {
+    "inputs": [
+      {
+        "type": "promptString",
+        "id": "pgyer_api_key",
+        "description": "PGYER API Key",
+        "password": true
+      }
+    ],
+    "servers": {
+      "pgyer": {
+        "command": "node",
+        "args": ["/path/to/pgyer-mcp-server/build/index.js"],
+        "env": {
+          "PGYER_API_KEY": "${input:pgyer_api_key}"
+        }
+      }
+    }
+  }
+}
+```
+
+> **注意：**
+> 1. 请将 `/path/to/pgyer-mcp-server` 替换为你本地的实际路径。
+> 2. `${workspaceFolder}` 会自动替换为你当前 VSCode 工作区的根目录。
+> 3. 你可以根据实际需求调整挂载目录。
+
 ## 工具配置
 
 有以下几组工具可用（默认情况下全部启用）：
