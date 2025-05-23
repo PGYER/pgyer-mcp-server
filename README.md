@@ -4,7 +4,6 @@
 
 <img src="https://raw.githubusercontent.com/PGYER/pgyer-mcp-server/refs/heads/main/assets/claude-screenshot.png" width="60%" alt="Claude Screenshot">
 
-
 ## 功能特点
 
 - 支持通过 MCP 协议上传应用到 PGYER 平台
@@ -26,6 +25,8 @@ npm install
 
 如果你想要与 Claude App 集成，需要在 Claude App 的配置文件中添加以下配置：
 
+#### 使用 Node.js 运行
+
 ```json
 {
   "mcpServers": {
@@ -40,9 +41,34 @@ npm install
 }
 ```
 
+#### 使用 Docker 运行
+
+```json
+{
+  "mcpServers": {
+    "pgyer": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "PGYER_API_KEY",
+        "--mount", "type=bind,src=/Users/username/Downloads,dst=/Users/username/Downloads",
+        "pgyer/pgyer-mcp-server"
+      ],
+      "env": {
+        "PGYER_API_KEY": "<your_pgyer_api_key>"
+      }
+    }
+  }
+}
+```
+
 请确保：
 1. 将 `/path/to/pgyer-mcp-server` 替换为你的实际项目路径
 2. 将 `your_pgyer_api_key` 替换为你的 PGYER API 密钥
+3. 如果使用 Docker，请根据你的实际需求调整挂载目录的路径
 
 ## 工具配置
 
