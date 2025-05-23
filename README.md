@@ -6,9 +6,15 @@
 
 ## 功能特点
 
-- 支持通过 MCP 协议上传应用到 PGYER 平台
-- 简单易用的 API 接口
-- 支持环境变量配置
+- 兼容 MCP (Model Context Protocol) 协议，支持多平台集成（如 Claude、VSCode 等）
+- 提供三大核心工具：
+  - `upload-app`：上传应用（ipa/apk）到 PGYER 平台，支持多种上传参数
+  - `list-my-apps`：查询当前账号下已上传的应用列表，支持分页
+  - `get-app-info-by-shortcut`：通过应用短链接（shortcut）查询详细信息
+- 支持通过环境变量 `PGYER_API_KEY` 配置 API 密钥，安全灵活
+- 简单易用的 API 接口，支持命令行、Node.js、Docker 等多种运行方式
+- 支持自定义上传参数（如安装方式、安装密码、更新描述、有效期等）
+- 适用于 iOS/Android 应用分发、测试、内测等多种场景
 
 ## 安装
 
