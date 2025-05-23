@@ -42,6 +42,8 @@ npm install
 
 如果你选择使用 Docker 运行时，只需确保你的系统已正确安装 Docker 并确保 Docker 正在运行。
 
+## 集成方式
+
 ### 与 Claude App 集成
 
 如果你想要与 Claude App 集成，需要在 Claude App 的配置文件中添加以下配置：
