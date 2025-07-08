@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/pgyer-pgyer-mcp-server-badge.png)](https://mseep.ai/app/pgyer-pgyer-mcp-server)
+
 # PGYER MCP Server
 
 这是一个用于上传应用到 PGYER 平台的 MCP (Model Context Protocol) 服务器。
