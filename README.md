@@ -84,6 +84,16 @@ claude mcp add --transport stdio pgyer --env PGYER_API_KEY=<your_pgyer_api_key> 
 
 请将 `<your_pgyer_api_key>` 替换为你的 PGYER API 密钥。
 
+### 与 Codex 集成
+
+如果你使用 Codex，可以通过以下命令快速添加 PGYER MCP Server：
+
+```bash
+codex mcp add pgyer --env PGYER_API_KEY=<your_pgyer_api_key> -- npx -y pgyer-mcp-server
+```
+
+请将 `<your_pgyer_api_key>` 替换为你的 PGYER API 密钥。
+
 ### 在 VSCode 中集成
 
 如果你希望在 VSCode 中集成 PGYER MCP Server，可以参考以下配置示例：
