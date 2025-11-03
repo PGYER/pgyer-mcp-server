@@ -23,36 +23,6 @@
 - **多平台集成**：支持与 Claude、VSCode 等平台集成，方便开发者在不同环境中使用 PGYER 服务。
 - **应用版本管理**：通过 `list-my-apps` 和 `get-app-info-by-shortcut` 工具，轻松查询和管理已上传的应用版本信息。
 
-## 先决条件
-
-### 使用 Node.js 运行时
-
-如果你选择使用 Node.js 运行时，请按照以下步骤操作：
-
-```bash
-# 克隆仓库
-git clone https://github.com/PGYER/pgyer-mcp-server.git
-cd pgyer-mcp-server
-
-# 安装依赖
-npm install
-```
-
-### 使用 Docker 运行时
-
-如果你选择使用 Docker 运行时，只需确保你的系统已正确安装 Docker 并确保 Docker 正在运行。
-
-### 使用 npx 运行（推荐）
-
-如果你已经发布了包到 npm，可以直接使用 npx 运行，无需克隆仓库：
-
-```bash
-# 直接运行，npx 会自动下载并执行最新版本
-npx -y pgyer-mcp-server
-```
-
-这是最简单的使用方式，适合快速测试和集成。
-
 ## 集成方式
 
 ### 与 Claude App 集成
@@ -67,22 +37,6 @@ npx -y pgyer-mcp-server
     "pgyer": {
       "command": "npx",
       "args": ["-y", "pgyer-mcp-server"],
-      "env": {
-        "PGYER_API_KEY": "<your_pgyer_api_key>"
-      }
-    }
-  }
-}
-```
-
-#### 使用 Node.js 运行
-
-```json
-{
-  "mcpServers": {
-    "pgyer": {
-      "command": "node",
-      "args": ["/path/to/pgyer-mcp-server/build/index.js"],
       "env": {
         "PGYER_API_KEY": "<your_pgyer_api_key>"
       }
@@ -119,6 +73,16 @@ npx -y pgyer-mcp-server
 1. 将 `/path/to/pgyer-mcp-server` 替换为你的实际项目路径
 2. 将 `your_pgyer_api_key` 替换为你的 PGYER API 密钥
 3. 如果使用 Docker，请根据你的实际需求调整挂载目录的路径
+
+### 与 Claude Code 集成
+
+如果你使用 Claude Code（命令行工具），可以通过以下命令快速添加 PGYER MCP Server：
+
+```bash
+claude mcp add --transport stdio pgyer --env PGYER_API_KEY=<your_pgyer_api_key> -- npx -y pgyer-mcp-server
+```
+
+请将 `<your_pgyer_api_key>` 替换为你的 PGYER API 密钥。
 
 ### 在 VSCode 中集成
 
@@ -176,32 +140,6 @@ npx -y pgyer-mcp-server
           "type=bind,src=${workspaceFolder},dst=/workspace",
           "pgyer/pgyer-mcp-server"
         ],
-        "env": {
-          "PGYER_API_KEY": "${input:pgyer_api_key}"
-        }
-      }
-    }
-  }
-}
-```
-
-#### 使用 Node.js 方式
-
-```json
-{
-  "mcp": {
-    "inputs": [
-      {
-        "type": "promptString",
-        "id": "pgyer_api_key",
-        "description": "PGYER API Key",
-        "password": true
-      }
-    ],
-    "servers": {
-      "pgyer": {
-        "command": "node",
-        "args": ["/path/to/pgyer-mcp-server/build/index.js"],
         "env": {
           "PGYER_API_KEY": "${input:pgyer_api_key}"
         }
