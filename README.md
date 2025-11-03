@@ -42,11 +42,38 @@ npm install
 
 如果你选择使用 Docker 运行时，只需确保你的系统已正确安装 Docker 并确保 Docker 正在运行。
 
+### 使用 npx 运行（推荐）
+
+如果你已经发布了包到 npm，可以直接使用 npx 运行，无需克隆仓库：
+
+```bash
+# 直接运行，npx 会自动下载并执行最新版本
+npx -y pgyer-mcp-server
+```
+
+这是最简单的使用方式，适合快速测试和集成。
+
 ## 集成方式
 
 ### 与 Claude App 集成
 
 如果你想要与 Claude App 集成，需要在 Claude App 的配置文件中添加以下配置：
+
+#### 使用 npx 运行（推荐）
+
+```json
+{
+  "mcpServers": {
+    "pgyer": {
+      "command": "npx",
+      "args": ["-y", "pgyer-mcp-server"],
+      "env": {
+        "PGYER_API_KEY": "<your_pgyer_api_key>"
+      }
+    }
+  }
+}
+```
 
 #### 使用 Node.js 运行
 
@@ -96,6 +123,32 @@ npm install
 ### 在 VSCode 中集成
 
 如果你希望在 VSCode 中集成 PGYER MCP Server，可以参考以下配置示例：
+
+#### 使用 npx 方式（推荐）
+
+```json
+{
+  "mcp": {
+    "inputs": [
+      {
+        "type": "promptString",
+        "id": "pgyer_api_key",
+        "description": "PGYER API Key",
+        "password": true
+      }
+    ],
+    "servers": {
+      "pgyer": {
+        "command": "npx",
+        "args": ["-y", "pgyer-mcp-server"],
+        "env": {
+          "PGYER_API_KEY": "${input:pgyer_api_key}"
+        }
+      }
+    }
+  }
+}
+```
 
 #### 使用 Docker 方式
 
