@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/pgyer-pgyer-mcp-server-badge.png)](https://mseep.ai/app/pgyer-pgyer-mcp-server)
+
 # PGYER MCP Server
 
 [English](./README.en.md) | 中文
