@@ -1,6 +1,8 @@
 # PGYER MCP Server
 
-这是一个用于上传应用到 PGYER 平台的 MCP (Model Context Protocol) 服务器。
+[English](./README.en.md) | 中文
+
+这是一个用于上传应用到 PGYER 平台的 MCP (Model Context Protocol) 服务器.
 
 ![Claude Screenshot](https://raw.githubusercontent.com/PGYER/pgyer-mcp-server/refs/heads/main/assets/claude-screenshot.png)
 
