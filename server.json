@@ -1,0 +1,32 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.PGYER/pgyer-mcp-server",
+  "title": "PGYER",
+  "description": "Upload Android, iOS and HarmonyOS apps to PGYER and manage their apps and versions.",
+  "websiteUrl": "https://www.pgyer.com",
+  "repository": {
+    "url": "https://github.com/PGYER/pgyer-mcp-server",
+    "source": "github"
+  },
+  "version": "2.0.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
+      "identifier": "pgyer-mcp-server",
+      "version": "2.0.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "PGYER_API_KEY",
+          "description": "Your PGYER API key, from https://www.pgyer.com/account/api",
+          "isRequired": true,
+          "isSecret": true,
+          "format": "string"
+        }
+      ]
+    }
+  ]
+}
