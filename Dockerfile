@@ -1,20 +1,9 @@
-# Use official Node.js image as base image
-FROM node:20-slim
+FROM node:24-slim
 
-# Set working directory
 WORKDIR /app
+COPY package.json ./
+RUN npm install --omit=dev --no-audit --no-fund
+COPY bin ./bin
 
-# Copy package.json and package-lock.json
-COPY package*.json ./
-
-# Install dependencies
-RUN npm install
-
-# Copy source code
-COPY . .
-
-# Build project
-RUN npm run build
-
-# Set start command
-CMD ["node", "build/index.js"] 
+# Pass the API key at run time: docker run -i --rm -e PGYER_API_KEY=... <image>
+ENTRYPOINT ["node", "bin/pgyer-mcp-server.js"]
