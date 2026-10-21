@@ -28,11 +28,22 @@ The MCP Registry checks that `mcpName` in the published `package.json` matches `
 
 Keep `version` and `packages[0].version` in `server.json` equal to the npm version. Then, from the repository root:
 
-```bash
-brew install mcp-publisher       # or download it from https://github.com/modelcontextprotocol/registry/releases
-mcp-publisher login github       # sign in as an owner of the PGYER GitHub organization
-mcp-publisher publish
-curl "https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.PGYER/pgyer-mcp-server"
-```
+Log in with a classic personal access token. The interactive `mcp-publisher login github` uses a
+GitHub App that isn't installed on the PGYER organization, so the registry only sees your personal
+namespace and `publish` fails with 403 ("You have permission to publish: io.github.<you>/*").
 
-`mcp-publisher login github` opens a device-code flow: open https://github.com/login/device, enter the code and authorize. Only owners of the PGYER organization can publish names under `io.github.PGYER/`.
+1. Create a classic token at https://github.com/settings/tokens/new as an owner of the PGYER
+   organization, with only the `read:org` scope and a short expiry.
+2. Publish:
+
+   ```bash
+   brew install mcp-publisher       # or download it from https://github.com/modelcontextprotocol/registry/releases
+   mcp-publisher logout
+   mcp-publisher login github --token <the classic token>
+   mcp-publisher publish
+   curl "https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.PGYER/pgyer-mcp-server"
+   ```
+
+3. Delete the token at https://github.com/settings/tokens.
+
+Only owners of the PGYER organization can publish names under `io.github.PGYER/`.
